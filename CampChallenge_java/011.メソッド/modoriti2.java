@@ -28,14 +28,9 @@ public class modoriti2 extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    String[] prof(String id, String name, String birth, String live){
-        String[] user = new String[4];
-        user[0] = id;
-        user[1] = name;
-        user[2] = birth;
-        user[3] = live;
-        
-        return user;
+    String[] profile(){
+        String[] prof = {"1", "山田太郎", "1999/4/1", "東京都"};
+        return prof;
     }
     
     
@@ -46,9 +41,10 @@ public class modoriti2 extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String[] profile = prof("12345", "山田太郎", "1999/4/1", "東京都");
-            out.print("名前は"+profile[1] + "生年月日は"+profile[2] + "住所は"+profile[3]);
-            
+            String[] user = profile();
+            for(int i = 1; i<user.length; i++){
+                out.print(user[i]);
+            }
         }
     }
 
